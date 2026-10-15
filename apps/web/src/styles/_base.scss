@@ -1,0 +1,59 @@
+// App-wide base rules, layered above the vendored theme.
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  // Fluid type: 15px on small screens up to 17px on wide ones, instead of 7.css's fixed 9pt.
+  --w7-font:
+    clamp(0.9375rem, 0.875rem + 0.3vw, 1.0625rem) 'Segoe UI', 'SegoeUI', 'Noto Sans', system-ui,
+    sans-serif;
+  --lantern-focus-ring: 2px solid var(--w7-el-bd-h);
+  --lantern-touch-target: 2.75rem;
+
+  color-scheme: light;
+}
+
+html {
+  font: var(--w7-font);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--w7-surface);
+  color: var(--w7-el-c);
+}
+
+button,
+[role='button'] {
+  min-height: var(--lantern-touch-target);
+}
+
+:focus-visible {
+  outline: var(--lantern-focus-ring);
+  outline-offset: 2px;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

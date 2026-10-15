@@ -1,0 +1,13 @@
+@use 'sass:meta';
+
+// Layer order: the vendored theme loses to our base rules, and both lose to
+// component styles, which are unlayered.
+@layer vendor, base;
+
+@layer vendor {
+  @include meta.load-css('styles/vendor/7css/index');
+}
+
+@layer base {
+  @include meta.load-css('styles/base');
+}
